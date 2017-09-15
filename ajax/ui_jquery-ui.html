@@ -1,0 +1,979 @@
+<script src="//cdn.jsdelivr.net/alertifyjs/1.4.0/alertify.min.js"></script>
+
+<script src="ajax.js"></script>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/alertifyjs/1.4.0/css/alertify.min.css"/>
+<!-- Default theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/alertifyjs/1.4.0/css/themes/default.min.css"/>
+<!-- Semantic UI theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/alertifyjs/1.4.0/css/themes/semantic.min.css"/>
+<!-- Bootstrap theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/alertifyjs/1.4.0/css/themes/bootstrap.min.css"/>
+<script>
+  function Guardaredicion1(cc){
+
+
+  	lunes=document.getElementById("inlu").value;
+  	martes=document.getElementById("inma").value;
+  	miercoles=document.getElementById("inmi").value;
+  	jueves=document.getElementById("inju").value;
+  	viernes=document.getElementById("invi").value;
+  	sabado=document.getElementById("insa").value;
+  	domingo=document.getElementById("indo").value;
+
+
+
+  		loadDoc4("lunes="+lunes+"&martes="+martes+"&miercoles="+miercoles+"&jueves="+jueves+"&viernes="+viernes+"&sabado="+sabado+"&domingo="+domingo+"&cc="+cc,"guardaredicion1.php",function(){
+
+  if (xmlhttp4.readyState==4 && xmlhttp4.status==200){
+
+    
+   
+   
+    
+    }
+     
+
+
+
+  });
+  }
+
+function dieta(cod){
+        $('#dieta').slideUp('slow',function(){
+       
+    
+  
+
+loadDoc4("vcod="+cod,"proc11.php",function(){
+
+  if (xmlhttp4.readyState==4 && xmlhttp4.status==200){
+
+   
+    document.getElementById("dieta").innerHTML=xmlhttp4.responseText;
+    
+    }else{ 
+    	document.getElementById("dieta").innerHTML=xmlhttp4.responseText;
+    	document.getElementById("dieta").innerHTML='<img src="load.gif" width="50" height="50" />'; 
+     
+
+}
+
+  });
+ 
+     dieta2(cod);
+    
+    
+ });
+$('#dieta').slideDown('slow');
+          
+      }
+
+    function dieta2(cod){
+    	loadDoc8("vcod="+cod,"procdie.php",function(){
+
+  	if (xmlhttp8.readyState==4 && xmlhttp8.status==200){
+
+  var text= xmlhttp8.responseText;
+
+ 
+/*  var cadena= text.split("*");
+$("#Lunes").val(lunes);
+ 		var lunes=cadena[0];
+ 			var martes=cadena[1];
+ 			var miercoles=cadena[2];
+ 			var jueves=cadena[3];
+ 			var viernes=cadena[4];
+ 			var sabado=cadena[5];
+ 			var domingo=cadena[6];
+ 			alert(domingo);
+   document.getElementById("Lunes".valueL=lunes;
+   document.getElementById("Martes").innerHTML=martes;
+   document.getElementById("Miercoles").innerHTML=miercoles;
+   document.getElementById("Jueves").innerHTML=jueves;
+   document.getElementById("Viernes").innerHTML=viernes;
+   document.getElementById("Sabado").innerHTML=sabado;
+   document.getElementById("Domingo").innerHTML=domingo;*/
+
+    }else{  }
+
+  });
+
+
+    }
+
+
+function Guardaredicion(cc,estatura,edadd,generoo){
+document.getElementById("myDiv1").innerHTML="";
+document.getElementById("myDiv1").style.border="0px";
+n=document.getElementById("nombresedit").value;
+a=document.getElementById("apellidosedit").value;
+cedula1=cc;
+d=document.getElementById("correoedit").value;
+e=document.getElementById("celularedit").value;
+
+g=document.getElementById("masacedit").value;
+
+			
+			pesoa=document.getElementById("pesoa").value;
+			tma=document.getElementById("uno").value;
+			gea=document.getElementById("dos").value
+			tmade=document.getElementById("tres").value;
+			geade=document.getElementById("cuatro").value;
+
+
+if(pesoa!=0 && pesoa!=null &&pesoa!="" && tma!=0 && tma!=null && tma!="" && gea!=0 && gea!=null && gea!="" && tmade!=0 && tmade!=null && tmade!="" && geade!=0 && geade!=null && geade!=""){
+
+loadDoc("vcod="+cedula1+"&n="+n+"&a="+a+"&d="+d+"&e="+e+"&g="+g+"&estatura="+estatura+"&generoo="+generoo+"&edadd="+edadd+"&pesoa="+pesoa+"&tma="+tma+"&gea="+gea+"&tmade="+tmade+"&geade="+geade,"guardaredicion.php",function(){
+
+  if (xmlhttp.readyState==4 && xmlhttp.status==200){
+	alert(xmlhttp.responseText);
+    if(xmlhttp.responseText==1){
+
+    	alertify.success("Se editó la informacion del usuario correctamente");
+    	
+    }
+    
+    }else{ document.getElementById("pers1").innerHTML='<img src="load.gif" width="50" height="50" />';
+   
+   
+}
+
+  });
+
+}else{
+
+		alertify.error("Debes llenar la información de la tasa metabólica");
+}
+}
+
+function myFunction(){
+
+var n=document.getElementById('bus').value;
+
+if(n==''){
+
+ document.getElementById("myDiv1").innerHTML="";
+ document.getElementById("myDiv1").style.border="0px";
+
+ document.getElementById("pers1").innerHTML="";
+
+ return;
+}
+var patron="j";
+var cadena=document.getElementById('bus').value;
+cadena1=cadena.replace(patron,'')
+loadDoc("q="+cadena1,"procedit.php",function(){
+
+  if (xmlhttp.readyState==4 && xmlhttp.status==200){
+
+    document.getElementById("myDiv1").innerHTML=xmlhttp.responseText;
+    document.getElementById("myDiv1").style.border="1px solid #A5ACB2";
+
+    }else{ document.getElementById("myDiv1").innerHTML='<img src="load.gif" width="50" height="50" />'; }
+
+  });
+
+}
+
+    function Registrar(){
+      
+
+cc=document.getElementById("cc").value;
+nom=document.getElementById("nombres").value;
+ape=document.getElementById("apellidos").value;
+eda=document.getElementById("edad").value;
+cor=document.getElementById("correo").value;
+cel=document.getElementById("celular").value;
+tal=document.getElementById("talla").value;
+sex=document.getElementById("sexo").value;
+com=document.getElementById("complexion").value;
+act=document.getElementById("actividad").value;
+mac=document.getElementById("masac").value;
+mag=document.getElementById("masag").value;
+mav=document.getElementById("masav").value;
+est=document.getElementById("estado").value;
+fam="En desarrollo";
+per="En desarrollo";
+obs="En desarrollo";
+tipo=1;
+
+
+if((cc!=='')&&(nom!=='')&&(ape!=='')&&(eda!=='' ) &&(eda>=18 )   &&(tal!=='')&&(mac!=='')&&(cor!=='')&&(cel!=='')){
+loadDoc("vcod="+cc+"&nom="+nom+"&ape="+ape+"&eda="+eda+"&cor="+cor+"&cel="+cel+
+        "&tal="+tal+"&sex="+sex+"&com="+com+"&act="+act+"&mac="+mac+"&mag="+mag+"&mav="+mav+"&estado="+est+"&fam="+fam+"&per="+per+"&obs="+obs+"&tipo="+tipo,"insertando.php",function(){
+  
+  if (xmlhttp.readyState==4 && xmlhttp.status==200){
+
+ document.getElementById("pers").innerHTML=xmlhttp.responseText;
+ 
+ if(xmlhttp.responseText==="1"){
+    alertify.success("Se registró el usuario correctamente");
+    		dieta(cc);
+                setTimeout(function(){ window.open("result.php?var="+cc+""); },3000);
+    }else if(xmlhttp.responseText==="2"){
+         alertify.error("Ya existe un usuario con esta cedula");
+        
+    }  
+    
+  
+    }else{ }
+  
+  });
+  }else{
+
+  	ify.error('Error en el ingreso de los datos')}
+}
+
+function calcular(){
+
+	var p1=document.getElementById("masacedit").value;
+	var p2=document.getElementById("pesoa").value;
+
+	var gen=document.getElementById("generoedit").value;
+
+	var edad=document.getElementById("edadedit").value;
+	var num=$("#actividad").val();
+	var actividad=num.toString();
+	
+	var tma=0;
+	var gea=0;
+	var tmade=0;
+	var geade=0;
+	if(p1!=0 && p2!=0 && edad!=0){
+		if(gen=="Femenino"){
+			if(edad>=18 && edad<30){
+						tma=14.818*p1+486.6;
+			}else if(edad>=30 && edad<=60){
+					tma=8.126*p1+845.6;
+
+			}else if(edad>60){
+					tma=9082*p1*+658.5;
+			}else{
+				alert("Error, debe ingresar la edad");
+			}
+				if(actividad=="poco"){
+				gea=1.56*tma;
+			}else if(actividad=="ligero"  || actividad=="moderado"){
+				gea=1.64*tma;
+			}else if(actividad=="fuerte" || actividad=="muy"){
+				gea=1.82*tma;
+			}
+
+		}else{
+				if(edad>=18 && edad<30){
+
+					tma=15.057*p1+ 692.2;
+
+			}else if(edad>=30 && edad<=60){
+
+					tma=11.472*p1+873.1;
+			}else if(edad>60){
+					tma=11.711*p1+ 587.7;
+			}else{
+				alert("Error, debes ingresar la edad");
+			}
+				
+				if(actividad=="poco"){
+					
+				gea=1.55*tma;
+				
+			}else if(actividad=="ligero"  || actividad=="moderado"){
+				gea=1.76*tma;
+			}else if(actividad=="fuerte" || actividad=="muy")
+			{
+				gea=2.10*tma;
+			}
+
+			}
+
+		if(gen=="Femenino"){
+			if(edad>=18 && edad<30){
+						tmade=14.818*p2+486.6;
+			}else if(edad>=30 && edad<=60){
+					tmade=8.126*p2+845.6;
+
+			}else if(edad>60){
+					tmade=9082*p2*+658.5;
+			}else{
+				alert("Error, debe ingresar la edad");
+			}
+			
+				if(actividad=="poco"){
+					
+				geade=1.56*tmade;
+			
+			}else if(actividad=="ligero"  || actividad=="moderado"){
+				geade=1.64*tmade;
+			}else if(actividad=="fuerte" || actividad=="muy")
+			{
+				geade=1.82*tmade;
+			}
+		}else
+			{
+
+				if(edad>=18 && edad<30){
+
+					tmade=15.057*p2+ 692.2;
+
+			}else if(edad>=30 && edad<=60){
+
+					tmade=11.472*p2+873.1;
+			}else if(edad>60){
+					tmade=11.711*p2+ 587.7;
+			}else{
+				alert("Error, debes ingresar la edad");
+			}
+				if(actividad=="poco"){
+					geade=1.55*tmade;
+				}else if(actividad=="ligero"  || actividad=="moderado"){
+					geade=1.76*tmade;
+				}else if(actividad=="fuerte" || actividad=="muy")
+				{
+					geade=2.10*tmade;
+				}
+
+
+			}
+
+			document.getElementById("uno").value=tma;
+			document.getElementById("dos").value=gea;
+			document.getElementById("tres").value=tmade;
+			document.getElementById("cuatro").value=geade;
+
+
+		}else{
+			 alertify.error("Error, debe ingresar todos los datos");
+		}
+
+}
+
+    function limpiar(){
+    		document.getElementById("uno").value=null;
+			document.getElementById("dos").value=null;
+			document.getElementById("tres").value=null;
+			document.getElementById("cuatro").value=null;
+
+    }
+
+
+
+ function desplega(p1,p2,p3,imc,peso,cc,peso1,peso2,peso3,peso4){
+    
+	alert("entro1");
+	if(peso2==0){
+		peso2=null;
+	}
+	if(peso3==0){
+		peso3=null;
+	}
+	if(peso4==0){
+		peso4=null;
+	}
+
+   var pesofinal=0;
+   var pesoini=0;
+   if(p1>p2){
+    pesofinal=p2;
+    pesoini=p1;
+   }else if(p1<p2){
+    pesofinal=p1;
+    pesoini=p2;
+   }
+    pro=(p1+p2)/2;   
+    $('#grafo').slideUp('slow',function(){
+	var chart = AmCharts.makeChart("dieta", {
+  "type": "xy",
+  "theme": "light",
+  "marginRight": 80,
+  "dataDateFormat": "YYYY-MM-DD",
+  "startDuration": 1.5,
+  "trendLines": [],
+  "balloon": {
+    "adjustBorderColor": false,
+    "shadowAlpha": 0,
+    "fixedPosition": true
+  },
+  "graphs": [{
+    "balloonText": "<div style='margin:5px;'><b>[[x]]</b><br>y:<b>[[y]]</b><br>value:<b>[[value]]</b></div>",
+    "bullet": "diamond",
+    "maxBulletSize": 25,
+    "lineAlpha": 0.8,
+    "lineThickness": 2,
+    "lineColor": "#b0de09",
+    "fillAlphas": 0,
+    "xField": "date",
+    "yField": "ay",
+    "valueField": "aValue"
+  }, {
+    "balloonText": "<div style='margin:5px;'><b>[[x]]</b><br>y:<b>[[y]]</b><br>value:<b>[[value]]</b></div>",
+    "bullet": "round",
+    "maxBulletSize": 25,
+    "lineAlpha": 0.8,
+    "lineThickness": 2,
+    "lineColor": "#fcd202",
+    "fillAlphas": 0,
+    "xField": "date",
+    "yField": "by",
+    "valueField": "bValue"
+  }],
+  "valueAxes": [{
+    "id": "ValueAxis-1",
+    "axisAlpha": 0
+  }, {
+    "id": "ValueAxis-2",
+    "axisAlpha": 0,
+    "position": "bottom"
+  }],
+  "allLabels": [],
+  "titles": [],
+  "dataProvider": 
+  [{
+    "date": 1,
+    "ay": pesoini,
+    "by": peso,
+    "aValue": 15,
+    "bValue": 10
+  }, {
+    "date": 2,
+   
+    "by": peso2,
+    "aValue": 15,
+    "bValue": 10
+  }, {
+    "date": 3,
+   
+    "by": peso3,
+    "aValue": 15,
+    "bValue": 10
+  },{
+    "date": 4,
+    "ay": pesofinal,
+    "by":peso4,
+    "aValue": 20,
+    "bValue": 10
+  }],
+
+  "export": {
+    "enabled": true
+  },
+
+  "chartScrollbar": {
+    "offset": 15,
+    "scrollbarHeight": 5
+  },
+
+  "chartCursor": {
+    "pan": true,
+    "cursorAlpha": 0,
+    "valueLineAlpha": 0
+  }
+});
+ });
+$('#grafo').slideDown('slow');
+      }  
+
+function myFunction2(cod){
+$('#pers1').slideUp('slow',function(){
+    
+
+    document.getElementById("myDiv1").innerHTML="";
+document.getElementById("myDiv1").style.border="0px";
+
+loadDoc("vcod="+cod,"edicion.php",function(){
+
+  if (xmlhttp.readyState==4 && xmlhttp.status==200){
+
+    document.getElementById("pers1").innerHTML=xmlhttp.responseText;
+    
+    }else{ document.getElementById("pers1").innerHTML='<img src="load.gif" width="50" height="50" />'; }
+
+  });
+    
+    
+    
+});
+$('#pers1').slideDown('slow');
+}   
+
+
+
+ function desplega2(peso1,peso2,peso3,peso4){
+    
+	alert("entro2");
+ 
+    $('#grafo2').slideUp('slow',function(){
+	var chart = AmCharts.makeChart("dieta2", {
+  "type": "xy",
+  "theme": "light",
+  "marginRight": 80,
+  "dataDateFormat": "YYYY-MM-DD",
+  "startDuration": 1.5,
+  "trendLines": [],
+  "balloon": {
+    "adjustBorderColor": false,
+    "shadowAlpha": 0,
+    "fixedPosition": true
+  },
+  "graphs": [{
+    "balloonText": "<div style='margin:5px;'><b>[[x]]</b><br>y:<b>[[y]]</b><br>value:<b>[[value]]</b></div>",
+    "bullet": "diamond",
+    "maxBulletSize": 25,
+    "lineAlpha": 0.8,
+    "lineThickness": 2,
+    "lineColor": "#b0de09",
+    "fillAlphas": 0,
+    "xField": "date",
+    "yField": "ay",
+    "valueField": "aValue"
+  }, {
+    "balloonText": "<div style='margin:5px;'><b>[[x]]</b><br>y:<b>[[y]]</b><br>value:<b>[[value]]</b></div>",
+    "bullet": "round",
+    "maxBulletSize": 25,
+    "lineAlpha": 0.8,
+    "lineThickness": 2,
+    "lineColor": "#fcd202",
+    "fillAlphas": 0,
+    "xField": "date",
+    "yField": "by",
+    "valueField": "bValue"
+  }],
+  "valueAxes": [{
+    "id": "ValueAxis-1",
+    "axisAlpha": 0
+  }, {
+    "id": "ValueAxis-2",
+    "axisAlpha": 0,
+    "position": "bottom"
+  }],
+  "allLabels": [],
+  "titles": [],
+  "dataProvider": 
+  [{
+    "date": 1,
+    "by": peso1,
+    
+    "aValue": 15,
+    "bValue": 10
+  }, {
+    "date": 2,
+   
+    "by": peso2,
+    "aValue": 15,
+    "bValue": 10
+  }, {
+    "date": 3,
+   
+    "by": peso3,
+    "aValue": 15,
+    "bValue": 10
+  },{
+    "date": 4,
+    
+    "by":peso4,
+    "aValue": 20,
+    "bValue": 10
+  }],
+
+  "export": {
+    "enabled": true
+  },
+
+  "chartScrollbar": {
+    "offset": 15,
+    "scrollbarHeight": 5
+  },
+
+  "chartCursor": {
+    "pan": true,
+    "cursorAlpha": 0,
+    "valueLineAlpha": 0
+  }
+});
+ });
+$('#grafo2').slideDown('slow');
+      }  
+
+
+
+
+    
+    
+</script>
+
+
+<div class="row">
+	<div id="breadcrumb" class="col-xs-12">
+		<a href="#" class="show-sidebar">
+			<i class="fa fa-bars"></i>
+		</a>
+		<ol class="breadcrumb pull-left">
+			<li><a href="index.html">Dashboard</a></li>
+			<li><a href="#">Administrar</a></li>
+			<li><a href="#">Seguimiento</a></li>
+		</ol>
+		<div id="social" class="pull-right">
+			<a href="#"><i class="fa fa-google-plus"></i></a>
+			<a href="#"><i class="fa fa-facebook"></i></a>
+			<a href="#"><i class="fa fa-twitter"></i></a>
+			<a href="#"><i class="fa fa-linkedin"></i></a>
+			<a href="#"><i class="fa fa-youtube"></i></a>
+		</div>
+	</div>
+</div>
+
+	<div class="col-xs-12 col-sm-6">
+		<div class="box">
+			<div class="box-header">
+				<div class="box-name">
+					<i class="fa fa-search"></i>
+					<span>Formulario</span>
+				</div>
+				<div class="box-icons pull-right">
+					<a class="collapse-link">
+						<i class="fa fa-chevron-up"></i>
+					</a>
+					<a class="expand-link">
+						<i class="fa fa-expand"></i>
+					</a>
+					
+					
+				</div>
+				<div class="no-move"></div>
+			</div>
+			<div class="box-content">
+				<div id="tabs">
+					<ul>
+						<li><a href="#tabs-1">Usuario nuevo</a></li>
+						<li><a href="#tabs-2">Usuario registrado</a></li>
+						<li><a href="#tabs-3">Tasa metabólica</a></li>
+					</ul>
+					<div id="tabs-1">
+						
+
+							<div class="form-group has-success has-feedback">
+						<label class="col-sm-2 control-label" style='text-aling="right"'>C.C</label>
+						<div class="col-sm-4">
+							<input id="cc" type="number" min="1" class="form-control" placeholder="Cedula" data-original-title="" title="" required>
+						</div>
+						<br>
+						<br>
+
+							
+						<label class="col-sm-2 control-label">Nombres</label>
+						<div class="col-sm-6">
+							<input id="nombres" type="text" class="form-control" placeholder="Nombres" data-original-title="" title="" required>
+						</div>
+						<br>
+						<br>
+
+
+						<label class="col-sm-2 control-label" style='text-aling="right"'>Apellidos</label>
+						<div class="col-sm-6">
+							<input id="apellidos"type="text" class="form-control" placeholder="Apellidos" data-original-title="" title="">
+							
+						</div>
+
+						<br>
+						<br>
+
+						
+						<label class="col-sm-2 control-label" >Edad</label>
+						<div class="col-sm-4">
+							<input id="edad" type="number" min="18" max ="100" class="form-control" placeholder="Edad" data-original-title="" title="">
+							
+						</div>
+						<br>
+						<br>
+
+						
+						<label class="col-sm-2 control-label">Correo</label>
+						<div class="col-sm-6">
+							<input type="email" id="correo" class="form-control" placeholder="E-Mail" data-original-title="" title="">
+							
+						</div>
+						<br>
+						<br>
+						
+
+						
+						<label class="col-sm-2 control-label" >Telefono</label>
+						<div class="col-sm-6">
+							<input type="number" class="form-control" id="celular" placeholder="Telefono" data-original-title="" title="" required  min="3001111111" max="3219999999">
+							
+						</div>
+
+
+						<br>
+						<br>
+
+						
+						<label class="col-sm-2 control-label">Sexo</label>
+						<div class="col-sm-6">
+							 <select id="sexo"   >
+           							 <option value="Masculino">Masculino</option>
+           							 <option value="Femenino">Femenino</option>
+            
+        					  </select>
+							
+						</div>
+
+
+						<br>
+						<br>
+
+						
+						<label class="col-sm-2 control-label">Talla</label>
+						<div class="col-sm-4">
+							<input type="number" class="form-control" placeholder="Talla" data-original-title="" title="" step="0.01" id="talla" min="0.5" max="2.50" >
+							
+						</div>
+
+
+						<br>
+						<br>
+
+						
+						<label class="col-sm-2 control-label">Complexion</label>
+						<div class="col-sm-6">
+								 <select id="complexion" class="form-control" >
+          								  <option value="1">Peque&ntilde;a</option>
+          								 <option value="2">Mediana</option>
+           								<option value="3">Grande</option>
+         						 </select>
+							
+						</div>
+
+
+						<br>
+						<br>
+
+						
+						<label class="col-sm-2 control-label">Masa Corporal</label>
+						<div class="col-sm-6">
+							<input  type="number" step="0.01" id="masac"  placeholder="Masa Corporal" required  type="text" class="form-control"data-original-title="" title="">
+							
+						</div>
+
+						<br>
+						<br>
+						<br>
+
+						
+						<label class="col-sm-2 control-label">Masa Grasa</label>
+						<div class="col-sm-6">
+							<input  type="number" step="0.01" id="masag"  placeholder="Masa Corporal" required  type="text" class="form-control"data-original-title="" title="">
+							
+						</div>
+
+						<br>
+						<br>
+						<br>
+
+						
+						<label class="col-sm-2 control-label">Masa Viceral</label>
+						<div class="col-sm-6">
+							<input  type="number" step="0.01" id="masav"  placeholder="Masa Corporal" required  type="text" class="form-control"data-original-title="" title="">
+							
+						</div>
+
+						<br>
+						<br>
+						<br>
+						
+						<label class="col-sm-2 control-label">Masa Corporal</label>
+						<div class="col-sm-8">
+							 <select id="actividad" class="form-control" >
+                             <option value="poco">Poco o ningún ejercicio</option>                                            
+            <option value="ligero">Ejercicio ligero (1-3 días a la semana)</option>
+            <option value="moderado">Ejercicio moderado (3-5 días a la semana)	</option>
+            <option value="fuerte">Ejercicio fuerte (6-7 días a la semana)</option>
+             <option value="muy">Ejercicio muy fuerte (dos veces al día, entrenamientos muy duros)</option>
+          </select>
+							
+						</div>
+
+						<br>
+							<br>
+								<br>
+
+						<label class="col-sm-2 control-label">Estado fisiologico</label>
+						<div class="col-sm-6">
+							<select id="estado" class="form-control" >
+                              <option value="0">Adulto</option>                                 
+                             <option value="1">Deportista</option>                                            
+            <option value="2">Vegetariano</option>
+            <option value="3">Deportista vegetriano	</option>
+            <option value="4">Mujer embarazada</option>
+            
+             
+          </select>
+							
+						</div>
+						<br>
+						<br>
+						<br>
+						<div  class="form-group">
+					  <div  class="col-sm-7" >
+                                              <button  class="btn btn-primary btn-label-left" onclick="Registrar()">
+							Registrar</button>						</div>
+							<br>
+					</div>
+					  <div id="pers"></div>
+					</div>
+						
+
+
+
+
+					</div>
+					<div id="tabs-2">
+
+
+
+					 <div>
+                    <input type="text" id="bus" class="col-sm-6" onkeyup="myFunction()" size="30" required autofocus placeholder="Buscar" />
+                    <br>
+                    
+                    </div>
+
+                    <div id="myDiv1" align="left" style="width: 245px">
+
+                                           </div>
+                                           	<div id="pers1" style="width: 500px; height: 600px;" ></div>
+                                             </div>
+					
+					<div id="tabs-3">
+						
+						 <div class="form-group">
+														                  <label for="inputEmail3" class="col-sm-4 control-label">Peso adecuado</label>
+
+														                  <div class="col-sm-6">
+														                    <input type="number" class="form-control" id="pesoa" placeholder="Ingresa un peso adecuado">
+														                  </div>
+														                </div>
+														                
+														                <div class="form-group">
+														                  <div class="col-sm-offset-2 col-sm-10">
+														                    <div class="checkbox">
+														                   
+														                    </div>
+														                  </div>
+														                </div>
+														                <div class="form-group">
+														               
+														                <input type="number"  class="form-control" id="uno" placeholder="Tasa metabólica actual"></input><br>
+														                </div>
+														                <div class="form-group">
+														               
+														                <input type="number" class="form-control" id="dos" placeholder="Fasto energético actual"></input><br>
+														                 </div>
+														                 <div class="form-group">
+														                
+														                <input type="number" class="form-control" id="tres" placeholder="Tasa metabólica adecuada"></input><br>
+														              </div>
+														              <div class="form-group">
+														                
+														                <input type="number" class="form-control" id="cuatro" placeholder="Gasto energético adecuado"></input><br>
+														                </div>
+														              </div>
+														              <!-- /.box-body -->
+														              <div class="box-footer">
+														                <button  class="btn btn-default" onclick="limpiar()">Limpiar</button>
+														                <button  class="btn btn-info pull-right" onclick="calcular()">Calcular</button>
+														              </div>
+					</div>
+
+
+
+				</div>
+			</div>
+		</div>
+	</div>
+<div class="col-xs-12 col-sm-6">
+            <div class="box" style="height: 500px">
+			<div class="box-header">
+				<div class="box-name">
+					<i class="fa fa-circle"></i>
+					<span>Peso</span>
+				</div>
+				<div class="box-icons">
+					<a class="collapse-link">
+						<i class="fa fa-chevron-up"></i>
+					</a>
+					<a class="expand-link">
+						<i class="fa fa-expand"></i>
+					</a>
+					
+				</div>
+				<div class="no-move"></div>
+			</div>
+			<div class="box-content"  style="height: 495px;" id="grafo" >
+			
+                            <div id="dieta" align="justify" style="width:520px; height:300px;;font-size:11px;"></div>	
+
+				
+			</div>
+		</div>
+	</div>
+
+
+	<div class="col-xs-12 col-sm-6">
+            <div class="box" style="height: 500px">
+			<div class="box-header">
+				<div class="box-name">
+					<i class="fa fa-circle"></i>
+					<span>Tasa metabólica</span>
+				</div>
+				<div class="box-icons">
+					<a class="collapse-link">
+						<i class="fa fa-chevron-up"></i>
+					</a>
+					<a class="expand-link">
+						<i class="fa fa-expand"></i>
+					</a>
+					
+				</div>
+				<div class="no-move"></div>
+			</div>
+			<div class="box-content"  style="height: 495px;" id="grafo2" >
+			
+                            <div id="dieta2" align="justify" style="width:520px; height:300px;;font-size:11px;"></div>	
+
+				
+			</div>
+		</div>
+	</div>
+
+	
+
+
+<script type="text/javascript">
+$(document).ready(function() {
+	// Load TimePicker plugin and callback all time and date pickers
+	LoadTimePickerScript(AllTimePickers);
+	// Create jQuery-UI tabs
+	$("#tabs").tabs();
+	// Sortable for elements
+	$(".sort").sortable({
+		items: "div.col-sm-2",
+		appendTo: 'div.box-content'
+	});
+	// Droppable for example of trash
+	$(".drop div.col-sm-2").draggable({containment: '.dropbox' });
+	$('#trash').droppable({
+		drop: function(event, ui) {
+			$(ui.draggable).remove();
+		}
+	});
+	var icons = {
+		header: "ui-icon-circle-arrow-e",
+		activeHeader: "ui-icon-circle-arrow-s"
+	};
+	// Make accordion feature of jQuery-UI
+	$("#accordion").accordion({icons: icons });
+	// Create UI spinner
+	$("#ui-spinner").spinner();
+	// Add Drag-n-Drop to boxes
+	WinMove();
+});
+</script>

@@ -1,0 +1,488 @@
+
+ 
+  <script>
+      
+      
+      function desplega(p1,p2,p3,imc){
+        
+   alert('hola '+p1+' , '+p2+' , '+p3);
+    pro=(p1+p2)/2;   
+      $('#grafo').slideUp('slow',function(){
+ var chart = AmCharts.makeChart("chartdiv1", {
+    "type": "serial",
+    "theme": "none",
+    "autoMargins": false,
+    "marginTop": 30,
+    "marginLeft": 80,
+    "marginBottom": 30,
+    "marginRight": 50,
+    "dataProvider": [{
+        "category": "Peso",
+        "excelent": 20,
+        "good": 20,
+        "average": 20,
+        "poor": 20,
+        "bad": 20,
+        "limit": pro,
+        
+        "full":100,
+        "bullet": p3
+    }],
+    "valueAxes": [{
+        "maximum": 100,
+        "stackType": "regular",
+        "gridAlpha": 0
+    }],
+    "startDuration": 1,
+    "graphs": [{
+        "columnWidth": 0.5,
+        "lineColor": "#000000",
+        "lineThickness": 3,
+        "noStepRisers": true,
+        "stackable": false,
+        "type": "step",
+        "valueField": "limit"
+    }, {
+        "fillAlphas": 0.8,
+        "lineColor": "#19d228",
+        "showBalloon": false,
+        "type": "column",
+        "valueField": "excelent"
+    }, {
+        "fillAlphas": 0.8,
+        "lineColor": "#b4dd1e",
+        "showBalloon": false,
+        "type": "column",
+        "valueField": "good"
+    }, {
+        "fillAlphas": 1,
+        "lineColor": "#f4fb16",
+        "showBalloon": false,
+        "type": "column",
+        "valueField": "average"
+    }, {
+        "fillAlphas": 0.8,
+        "lineColor": "#f6d32b",
+        "showBalloon": false,
+        "type": "column",
+        "valueField": "poor"
+    }, {
+        "fillAlphas": 0.8,
+        "lineColor": "#fb7116",
+        "showBalloon": false,
+        "type": "column",
+        "valueField": "bad"
+    }, {
+        "clustered": false,
+        "columnWidth": 0.3,
+        "fillAlphas": 1,
+        
+        "lineColor": "#000000",
+        "stackable": false,
+        "type": "column",
+        "valueField": "bullet"
+    }],
+    "rotate": true,
+    "columnWidth": 1,
+    "categoryField": "category",
+    "categoryAxis": {
+        "gridAlpha": 0,
+        "position": "left"
+    }
+});
+
+
+var chart = AmCharts.makeChart("chartdiv2", {
+    "type": "serial",
+    "rotate": true,
+    "theme": "none",
+    "autoMargins": false,
+    "marginTop": 30,
+    "marginLeft": 80,
+    "marginBottom": 30,
+    "marginRight": 50,
+    "dataProvider": [{
+        "category": "IMC",
+        "excelent":10,
+        "good": 10,
+        "average": 10,
+        "poor": 10,
+        "bad": 10,
+        "limit": 25,
+        "full": 50,
+        "bullet": imc
+    }],
+    "valueAxes": [{
+        "maximum": 50,
+        "stackType": "regular",
+        "gridAlpha": 0
+    }],
+    "startDuration": 1,
+    "graphs": [{
+        "columnWidth": 0.5,
+        "lineColor": "#000000",
+        "lineThickness": 3,
+        "noStepRisers": true,
+        "stackable": false,
+        "type": "step",
+        "valueField": "limit"
+    }, {
+        "valueField": "full",
+        "showBalloon": false,
+        "type": "column",
+        "lineAlpha": 0,
+        "fillAlphas": 0.8,
+        "fillColors": ["#19d228", "#f6d32b", "#fb2316"],
+        "gradientOrientation": "horizontal",
+    }, {
+        "clustered": false,
+        "columnWidth": 0.3,
+        "fillAlphas": 1,
+        "lineColor": "#000000",
+        "stackable": false,
+        "type": "column",
+        "valueField": "bullet"
+    }],
+    "columnWidth": 1,
+    "categoryField": "category",
+    "categoryAxis": {
+        "gridAlpha": 0,
+        "position": "left"
+    }
+});
+ });
+$('#grafo').slideDown('slow');
+      } 
+      
+  </script>
+  
+<script>
+function dieta(cod){
+        $('#dieta').slideUp('slow',function(){
+       
+    
+  
+
+loadDoc4("vcod="+cod,"proc10.php",function(){
+
+  if (xmlhttp4.readyState==4 && xmlhttp4.status==200){
+
+    document.getElementById("dieta").innerHTML=xmlhttp4.responseText;
+     alert('entro');  
+    }else{ document.getElementById("dieta").innerHTML='<img src="load.gif" width="50" height="50" />'; }
+
+  });
+    
+    
+    
+ });
+$('#dieta').slideDown('slow');
+          
+      }
+     
+function myFunction(){
+
+var n=document.getElementById('bus').value;
+
+if(n==''){
+
+ document.getElementById("myDiv").innerHTML="";
+ document.getElementById("myDiv").style.border="0px";
+
+ document.getElementById("pers").innerHTML="";
+
+ return;
+}
+var patron="j";
+var cadena=document.getElementById('bus').value;
+cadena1=cadena.replace(patron,'')
+loadDoc("q="+cadena1,"proc.php",function(){
+
+  if (xmlhttp.readyState==4 && xmlhttp.status==200){
+
+    document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+    document.getElementById("myDiv").style.border="1px solid #A5ACB2";
+
+    }else{ document.getElementById("myDiv").innerHTML='<img src="load.gif" width="50" height="50" />'; }
+
+  });
+
+}
+//-------------------------------
+
+
+function myFunction2(cod){
+$('#pers').slideUp('slow',function(){
+    
+    document.getElementById("myDiv").innerHTML="";
+document.getElementById("myDiv").style.border="0px";
+
+loadDoc("vcod="+cod,"proc2.php",function(){
+
+  if (xmlhttp.readyState==4 && xmlhttp.status==200){
+
+    document.getElementById("pers").innerHTML=xmlhttp.responseText;
+    
+    }else{ document.getElementById("pers").innerHTML='<img src="load.gif" width="50" height="50" />'; }
+
+  });
+    
+    
+    
+});
+$('#pers').slideDown('slow');
+}
+
+
+
+
+
+
+
+function editar(cc){
+    
+    
+    $('#pers').slideUp('slow',function(){
+document.getElementById("myDiv").innerHTML="";
+document.getElementById("myDiv").style.border="0px";
+
+loadDoc("vcod="+cc,"proc3.php",function(){
+
+  if (xmlhttp.readyState==4 && xmlhttp.status==200){
+
+    document.getElementById("pers").innerHTML=xmlhttp.responseText;
+    
+    }else{ document.getElementById("pers").innerHTML='<img src="load.gif" width="50" height="50" />'; }
+
+  });
+
+});
+$('#pers').slideDown('slow');
+
+}
+function Guardaredicion(cc){
+document.getElementById("myDiv").innerHTML="";
+document.getElementById("myDiv").style.border="0px";
+n=document.getElementById("nombre").value;
+a=document.getElementById("apellido").value;
+c=document.getElementById("cc").value;
+d=document.getElementById("correo").value;
+e=document.getElementById("celular").value;
+f=document.getElementById("talla").value;
+g=document.getElementById("masac").value;
+
+loadDoc("vcod="+cc+"&n="+n+"&a="+a+"&c="+c+"&d="+d+"&e="+e+"&f="+f+"&g="+g,"proc4.php",function(){
+
+  if (xmlhttp.readyState==4 && xmlhttp.status==200){
+
+    document.getElementById("pers").innerHTML=xmlhttp.responseText;
+    
+    }else{ document.getElementById("pers").innerHTML='<img src="load.gif" width="50" height="50" />'; }
+
+  });
+
+}
+function eliminar(cc){
+document.getElementById("myDiv").innerHTML="";
+document.getElementById("myDiv").style.border="0px";
+
+loadDoc("vcod="+cc,"proc5.php",function(){
+
+  if (xmlhttp.readyState==4 && xmlhttp.status==200){
+
+    document.getElementById("pers").innerHTML=xmlhttp.responseText;
+    
+    }else{ document.getElementById("pers").innerHTML='<img src="load.gif" width="50" height="50" />'; }
+
+  });
+
+}
+function confirmar(cc){
+c=confirm('¿Desea eliminar el registro?');
+if(c){eliminar(cc);}else{return false;}
+}
+
+
+</script>
+
+
+
+<div class="row">
+	<div id="breadcrumb" class="col-xs-12">
+		<a href="#" class="show-sidebar">
+			<i class="fa fa-bars"></i>
+		</a>
+		<ol class="breadcrumb pull-left">
+			<li><a href="index.html">Inicio</a></li>
+			<li><a href="#">Pacientes</a></li>
+			<li><a href="#">Buscar</a></li>
+		</ol>
+		<div id="social" class="pull-right">
+			<a href="#"><i class="fa fa-google-plus"></i></a>
+			<a href="#"><i class="fa fa-facebook"></i></a>
+			<a href="#"><i class="fa fa-twitter"></i></a>
+			<a href="#"><i class="fa fa-linkedin"></i></a>
+			<a href="#"><i class="fa fa-youtube"></i></a>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-12 col-sm-6">
+		<div class="box"  >
+			<div class="box-header"  >
+				<div class="box-name">
+				<i class="fa fa-search"></i>Buscador de pacientes</div>
+				<div class="box-icons">
+					<a class="collapse-link">
+						<i class="fa fa-chevron-up"></i>
+					</a>
+					<a class="expand-link">
+						<i class="fa fa-expand"></i>
+					</a>
+					
+				</div>
+				<div class="no-move"></div>
+			</div>
+			<div class="box-content" style="height: 650px;">
+				
+                
+                <div id="xchart-3" class="form-group" style="height: 700px;">
+                    <div>
+                    <input type="text" id="bus" onkeyup="myFunction()" size="30" required autofocus placeholder="Buscar" />
+                    <br>
+                    
+                    </div>
+
+                    <div id="myDiv" align="left" style="width: 245px">
+
+                                           </div>
+
+
+
+<div id="pers" style="width: 300px; height: 600px;" ></div>
+  <div align="right" id="este"></div>              
+                
+                
+                </div>
+			</div>
+		</div>
+	</div>
+    
+    <div class="col-xs-12 col-sm-6">
+            <div class="box" style="height: 680px">
+			<div class="box-header">
+				<div class="box-name">
+					<i class="fa fa-circle"></i>
+					<span>Dieta Sugerida</span>
+				</div>
+				<div class="box-icons">
+					<a class="collapse-link">
+						<i class="fa fa-chevron-up"></i>
+					</a>
+					<a class="expand-link">
+						<i class="fa fa-expand"></i>
+					</a>
+					
+				</div>
+				<div class="no-move"></div>
+			</div>
+			<div class="box-content"  style="height: 400px;" id="grafo" >
+			
+                            <div id="dieta" align="justify" style="width:450px; height:150px;font-size:11px;"></div>	
+
+				
+			</div>
+		</div>
+	</div>
+    <div class="col-xs-12 col-sm-6">
+		<div class="box">
+			<div class="box-header">
+				<div class="box-name">
+					<i class="fa fa-bar-chart-o"></i>
+					<span>Graficos</span>
+				</div>
+				<div class="box-icons">
+					<a class="collapse-link">
+						<i class="fa fa-chevron-up"></i>
+					</a>
+					<a class="expand-link">
+						<i class="fa fa-expand"></i>
+					</a>
+					
+				</div>
+				<div class="no-move"></div>
+			</div>
+			<div class="box-content"  style="height:  420px">
+			<div id="chartdiv1" style="width:520px; height:150px;"></div>
+                        <div id="chartdiv2" style="width:520px; height:150px;"></div>		
+                            
+                            
+			</div>
+		</div>
+	</div>
+    <div class="col-xs-12 col-sm-6">
+		<div class="box">
+			<div class="box-header">
+				<div class="box-name">
+					<i class="fa fa-search"></i>
+					<span>Valoracion del IMC</span>
+				</div>
+				<div class="box-icons">
+					<a class="collapse-link">
+						<i class="fa fa-chevron-up"></i>
+					</a>
+					<a class="expand-link">
+						<i class="fa fa-expand"></i>
+					</a>
+					
+				</div>
+				<div class="no-move"></div>
+			</div>
+			<div class="box-content">
+                            <div id="xchart-1" style="height: 200px; width: 100%;">
+                                
+                                <div id="imc"></div>
+                                
+                                
+                            </div>
+			</div>
+		</div>
+	</div>
+    <div class="col-xs-12 col-sm-6">
+		<div class="box">
+			<div class="box-header">
+				<div class="box-name">
+					<i class="fa fa-search"></i>
+					<span>DATOS SOBRE EL PESO</span>
+				</div>
+				<div class="box-icons">
+					<a class="collapse-link">
+						<i class="fa fa-chevron-up"></i>
+					</a>
+					<a class="expand-link">
+						<i class="fa fa-expand"></i>
+					</a>
+					
+				</div>
+				<div class="no-move"></div>
+                                 
+			</div>
+			<div class="box-content">
+				<div id="tm"></div>
+                                <div id="sug"></div>
+                                <div id="xchart-2" style="height: 100px; width: 100%;">
+                                       <div id="tm"></div>
+                                       
+                                </div>
+                                
+			</div>
+		</div>
+	</div>
+</div>
+
+	<div class="row">
+	
+            
+	
+</div>
