@@ -26,13 +26,13 @@ if (mysqli_num_rows($res) == 0) {
     echo "<tr><td>IMC</td><td id='indice'>$row[12]</td></tr> \n";
     echo "<tr><td>Complexion</td><td >$row[13]</td></tr> \n";
     echo "<tr><td>Grado de actividad fisica</td><td id='act' >$row[14]</td></tr> \n";
-    echo "<tr><td>Masa corporal</td><td id='masac'>$row[15]</td></tr> \n";
+    echo "<tr><td>Peso</td><td id='masac'>$row[15]</td></tr> \n";
     echo "<tr><td>Masa Grasa</td><td id='masag'>$row[16]</td></tr> \n";
-    echo "<tr><td>Masa viceral</td><td id='masav'>$row[17]</td></tr> \n";
-    echo "<tr><td>Taza metabolica</td><td id='tazam'>$row[18]</td></tr> \n";
+    echo "<tr><td>Masa Visceral</td><td id='masav'>$row[17]</td></tr> \n";
+    echo "<tr><td>Tasa Metabólica</td><td id='tazam'>$row[18]</td></tr> \n";
     echo "<tr><td> Edad Corporal</td><td>$row[19]</td></tr> \n";
-    echo "<tr><td> Referencias familiares</td><td>$row[20]</td></tr> \n";
-    echo "<tr><td>Referencias personales</td><td>$row[21]</td></tr> \n";
+    echo "<tr><td> Antecedentes Familiares</td><td>$row[20]</td></tr> \n";
+    echo "<tr><td>Antecedentes Personales</td><td>$row[21]</td></tr> \n";
     echo "<tr><td> Observacion</td><td id='ob'>$row[22]</td></tr> \n";
     echo "</table> \n";
     

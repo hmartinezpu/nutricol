@@ -126,14 +126,15 @@ if(pesoa!=0 && pesoa!=null &&pesoa!="" && tma!=0 && tma!=null && tma!="" && gea!
 loadDoc("vcod="+cedula1+"&n="+n+"&a="+a+"&d="+d+"&e="+e+"&g="+g+"&estatura="+estatura+"&generoo="+generoo+"&edadd="+edadd+"&pesoa="+pesoa+"&tma="+tma+"&gea="+gea+"&tmade="+tmade+"&geade="+geade,"guardaredicion.php",function(){
 
   if (xmlhttp.readyState==4 && xmlhttp.status==200){
-	alert(xmlhttp.responseText);
+	
     if(xmlhttp.responseText==1){
 
     	alertify.success("Se editó la informacion del usuario correctamente");
     	
     }
     
-    }else{ document.getElementById("pers1").innerHTML='<img src="load.gif" width="50" height="50" />';
+    }else{ 
+    	
    
    
 }
@@ -181,14 +182,14 @@ loadDoc("q="+cadena1,"procedit.php",function(){
 cc=document.getElementById("cc").value;
 nom=document.getElementById("nombres").value;
 ape=document.getElementById("apellidos").value;
-eda=document.getElementById("edad").value;
+eda=document.getElementById("edadedit").value;
 cor=document.getElementById("correo").value;
 cel=document.getElementById("celular").value;
 tal=document.getElementById("talla").value;
-sex=document.getElementById("sexo").value;
+sex=document.getElementById("generoedit").value;
 com=document.getElementById("complexion").value;
 act=document.getElementById("actividad").value;
-mac=document.getElementById("masac").value;
+mac=document.getElementById("masacedit").value;
 mag=document.getElementById("masag").value;
 mav=document.getElementById("masav").value;
 est=document.getElementById("estado").value;
@@ -196,11 +197,21 @@ fam="En desarrollo";
 per="En desarrollo";
 obs="En desarrollo";
 tipo=1;
+edadc=1;
+			pesoa=document.getElementById("pesoa").value;
+			tma=document.getElementById("uno").value;
+			gea=document.getElementById("dos").value;
+			tmade=document.getElementById("tres").value;
+			geade=document.getElementById("cuatro").value;
+
+tipo=1;
+if(pesoa!=0 && pesoa!=null &&pesoa!="" && tma!=0 && tma!=null && tma!="" && gea!=0 && gea!=null && gea!="" && tmade!=0 && tmade!=null && tmade!="" && geade!=0 && geade!=null && geade!=""){
 
 
 if((cc!=='')&&(nom!=='')&&(ape!=='')&&(eda!=='' ) &&(eda>=18 )   &&(tal!=='')&&(mac!=='')&&(cor!=='')&&(cel!=='')){
 loadDoc("vcod="+cc+"&nom="+nom+"&ape="+ape+"&eda="+eda+"&cor="+cor+"&cel="+cel+
-        "&tal="+tal+"&sex="+sex+"&com="+com+"&act="+act+"&mac="+mac+"&mag="+mag+"&mav="+mav+"&estado="+est+"&fam="+fam+"&per="+per+"&obs="+obs+"&tipo="+tipo,"insertando.php",function(){
+        "&tal="+tal+"&sex="+sex+"&com="+com+"&act="+act+"&mac="+mac+"&mag="+mag+"&mav="+mav+"&estado="+est+"&fam="+fam+
+        "&per="+per+"&obs="+obs+"&tipo="+tipo+"&edadc="+edadc+"&pesoa="+pesoa+"&tma="+tma+"&gea="+gea+"&tmade="+tmade+"&geade="+geade,"insertando.php",function(){
   
   if (xmlhttp.readyState==4 && xmlhttp.status==200){
 
@@ -208,21 +219,32 @@ loadDoc("vcod="+cc+"&nom="+nom+"&ape="+ape+"&eda="+eda+"&cor="+cor+"&cel="+cel+
  
  if(xmlhttp.responseText==="1"){
     alertify.success("Se registró el usuario correctamente");
-    		dieta(cc);
-                setTimeout(function(){ window.open("result.php?var="+cc+""); },3000);
-    }else if(xmlhttp.responseText==="2"){
-         alertify.error("Ya existe un usuario con esta cedula");
-        
-    }  
     
-  
-    }else{ }
+                window.open("result.php?var="+cc+""); 
+    }else if(xmlhttp.responseText==="2"){
+         alertify.error("Error");
+        
+    }  else if(xmlhttp.responseText==="3"){
+alertify.error("Ya existe un usuario con esta cedula");
+    }
+    
+    if(document.getElementById("pers").value==1){
+  	 alertify.success("Se registró el usuario correctamente");
+    }
+
+
+    }else if (xmlhttp.responseText=="<label>Error</label>"){ 
+           alertify.error("Error al ingresar los datos");
+    }
   
   });
-  }else{
-
-  	ify.error('Error en el ingreso de los datos')}
+  }else{alertify.error('Error, debe ingresar todos los datos')}
+}else{
+	alertify.error("Debes ingresar la información de la Tasa metabólica");
 }
+
+}   
+
 
 function calcular(){
 
@@ -359,7 +381,7 @@ function calcular(){
 
  function desplega(p1,p2,p3,imc,peso,cc,peso1,peso2,peso3,peso4){
     
-	alert("entro1");
+	
 	if(peso2==0){
 		peso2=null;
 	}
@@ -499,7 +521,7 @@ $('#pers1').slideDown('slow');
 
  function desplega2(peso1,peso2,peso3,peso4){
     
-	alert("entro2");
+	
  
     $('#grafo2').slideUp('slow',function(){
 	var chart = AmCharts.makeChart("dieta2", {
@@ -679,7 +701,7 @@ $('#grafo2').slideDown('slow');
 						
 						<label class="col-sm-2 control-label" >Edad</label>
 						<div class="col-sm-4">
-							<input id="edad" type="number" min="18" max ="100" class="form-control" placeholder="Edad" data-original-title="" title="">
+							<input id="edadedit" type="number" min="18" max ="100" class="form-control" placeholder="Edad" data-original-title="" title="">
 							
 						</div>
 						<br>
@@ -709,7 +731,7 @@ $('#grafo2').slideDown('slow');
 						
 						<label class="col-sm-2 control-label">Sexo</label>
 						<div class="col-sm-6">
-							 <select id="sexo"   >
+							 <select id="generoedit"   >
            							 <option value="Masculino">Masculino</option>
            							 <option value="Femenino">Femenino</option>
             
@@ -748,9 +770,9 @@ $('#grafo2').slideDown('slow');
 						<br>
 
 						
-						<label class="col-sm-2 control-label">Masa Corporal</label>
+						<label class="col-sm-2 control-label">Peso</label>
 						<div class="col-sm-6">
-							<input  type="number" step="0.01" id="masac"  placeholder="Masa Corporal" required  type="text" class="form-control"data-original-title="" title="">
+							<input  type="number" step="0.01" id="masacedit"  placeholder="Masa Corporal" required  type="text" class="form-control"data-original-title="" title="">
 							
 						</div>
 
