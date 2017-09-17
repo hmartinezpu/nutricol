@@ -17,7 +17,7 @@ if (mysqli_num_rows($res) == 0) {
 $row = mysqli_fetch_array($res);
  
 
-if($row['constante']=='1'){
+
 
      $sql1 = "select * from bajarasignadas where id='".$codigo."'";
      $res1 = mysqli_query($con, $sql1);
@@ -52,6 +52,6 @@ if($row['constante']=='1'){
      echo "</table>";
      
      
- }
+ 
 }
 ?>

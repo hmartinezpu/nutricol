@@ -209,24 +209,7 @@ include 'conexion.php';
                                 <a href="#" class="about">Acerca de</a>
 
                                 <ul class="nav navbar-nav pull-right panel-menu">
-                                    <li class="hidden-xs">
-                                        <a href="index_v1.php" class="modal-link">
-                                            <i class="fa fa-bell"></i>
-                                            <span class="badge">7</span>
-                                        </a>
-                                    </li>
-                                    <li class="hidden-xs">
-                                        <a class="ajax-link" href="ajax/calendar.html">
-                                            <i class="fa fa-calendar"></i>
-                                            <span class="badge">7</span>
-                                        </a>
-                                    </li>
-                                    <li class="hidden-xs">
-                                        <a href="ajax/page_messages.html" class="ajax-link">
-                                            <i class="fa fa-envelope"></i>
-                                            <span class="badge">7</span>
-                                        </a>
-                                    </li>
+                                    
                                     <li class="dropdown">
                                         <a href="#" class="dropdown-toggle account" data-toggle="dropdown">
                                             <div class="avatar">

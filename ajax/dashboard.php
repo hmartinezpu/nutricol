@@ -43,8 +43,10 @@ function dieta2(cod){
   
 
 loadDoc4("vcod="+cod,"procesodieta.php",function(){
+	alert(cod);
 
   if (xmlhttp4.readyState==4 && xmlhttp4.status==200){
+  	alert(xmlhttp4.responseText);
 
     document.getElementById("dietaa").innerHTML=xmlhttp4.responseText;
       
