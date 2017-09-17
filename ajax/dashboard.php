@@ -39,10 +39,7 @@ dieta2(cedula);
 function dieta2(cod){
         $('#dietaa').slideUp('slow',function(){
        
-    
-  
-
-loadDoc4("vcod="+cod,"procesodieta.php",function(){
+    loadDoc4("vcod="+cod,"procesodieta.php",function(){
 	alert(cod);
 
   if (xmlhttp4.readyState==4 && xmlhttp4.status==200){
