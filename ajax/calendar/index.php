@@ -33,7 +33,7 @@ $events = $req->fetchAll();
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="#">Menu</a>
+                        <a href="#">Menú</a>
                     </li>
                 </ul>
             </div>
@@ -268,9 +268,9 @@ $events = $req->fetchAll();
 			 data: {Event:Event},
 			 success: function(rep) {
 					if(rep == 'OK'){
-						alert('Saved');
+						alert('Guardado');
 					}else{
-						alert('Could not be saved. try again.'); 
+						alert('No se pudo guardar.'); 
 					}
 				}
 			});

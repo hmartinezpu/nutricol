@@ -1,3 +1,8 @@
+<div id="google_translate_element"></div><script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'es', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+}
+</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 <?php
 session_start();
 if (!$_SESSION) {
@@ -134,6 +139,8 @@ $('#grafo').slideDown('slow');
 function buscarporpartes(){
 	var resultado="";
 	var palabra= document.getElementById("busespecial").value;
+   var porcion=document.getElementById("bus1").value;
+   if(palabra!="" && porcion!=""){
 	var envio=palabra.replace("de ","");
 	envio=envio.replace("del ","");
 	envio=envio.replace("en ","");
@@ -169,6 +176,13 @@ function buscarporpartes(){
     
     	 }
   });
+
+}else{
+  alert("Debes llenar todos los campos")
+}
+
+
+
 }
 
 function dieta(cod){
@@ -245,26 +259,39 @@ $('#dieta').slideDown('slow');
 	var reemplaced; 
   var cont=0;
   var r;
+  var esta= document.getElementById("bus2").value;
+       var reemplazo=document.getElementById("bus3").value;
+       var porcion=document.getElementById("bus4").value
+        if( esta !=""   && reemplazo !=""  && porcion!=""){
+
   $('#tabladieta tr').each(function () {
+
+
   var palabra=$(this).find("td").eq(1).html();
 
        cont++;
        if(palabra!=undefined){
        var result= palabra.split(" o "); 
       
-       var esta= document.getElementById("bus2").value;
-       var reemplazo=document.getElementById("bus3").value;
-       var porcion=document.getElementById("bus4").value;
-       for (var i=0; i<result.length; i++) {
+       
+              for (var i=0; i<result.length; i++) {
               		if(result[i]==esta)
               		{
               			var conca=porcion+" de "+reemplazo;
               		palabra=palabra.replace(esta,conca);
               		$(this).find("td").eq(1).html(palabra);
               		}
-           }  
+           } 
+
+
+
       }
 });
+}else{
+  alert("Agrega todos los capos")
+}
+
+
 }
 function buscarreemplazomanual(){
  var palabras=[];

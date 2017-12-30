@@ -209,6 +209,12 @@ if ($row[11] == 'Femenino') {
 
 
 
+
+
+
+
+
+
 ?>
 
 <div class="form-group has-success has-feedback">
@@ -280,7 +286,7 @@ if ($row[11] == 'Femenino') {
             
             <label class="col-sm-2 control-label">Peso</label>
             <div class="col-sm-6">
-              <input  type="number" step="0.01" id="masacedit"  placeholder="Masa Corporal" required  type="text" class="form-control"data-original-title="" title="" value="<?php echo $pesof ?>">
+              <input  type="number" step="0.01" id="masaceditt"  placeholder="Masa Corporal" required  type="text" class="form-control" value="<?php echo $pesof ?>">
               
             </div>
 
@@ -326,7 +332,7 @@ if ($row[11] == 'Femenino') {
             <br>
                 <label class="col-sm-2 control-label" style='text-aling="right"'>Edad</label>
             <div class="col-sm-6">
-              <input id="edadedit" type="text" class="form-control" placeholder="Edad" data-original-title="" title=""  disabled value="<?php echo $row['edad'] ?>">
+              <input id="edadeditt" type="text" class="form-control" placeholder="Edad"   disabled value="<?php echo $row['edad'] ?>">
               
             </div>
             <br>
@@ -342,7 +348,30 @@ if ($row[11] == 'Femenino') {
             <div  class="form-group">
             <div  class="col-sm-7" >
         <button  class="btn btn-primary btn-label-left" onclick="Guardaredicion(<?php echo $row['cc']?>,<?php echo $row[7]?>,<?php echo $row[15]?>,'<?php echo $row[11]?>');desplega('<?php echo $valor1?>','<?php echo $valor2?>','<?php echo $valor3?>','<?php echo $row[12]?>','<?php echo $row['masacorporal']?>','<?php echo $row['cc'] ?>','<?php echo $peso1 ?>',' <?php echo $peso2?>',' <?php echo $peso3?>','<?php echo $peso4?>');desplega2('<?php echo $tma1 ?>','<?php echo $tma2 ?>','<?php echo $tma3 ?>','<?php echo $tma4 ?>')">
-              Editar</button>            </div>
+              Editar</button>  
+
+              <?php
+
+              $res10=mysqli_query($con,"SELECT * FROM `pesos` WHERE id=".$codigo."");
+    
+    
+    
+              $row10 = mysqli_fetch_array($res10);
+              
+              $peso11=$row10['peso1'];
+              $peso22=$row10['peso2'];
+              $peso33=$row10['peso3'];
+              $peso44=$row10['peso4'];
+              ?>     
+
+               <button  class="btn btn-primary btn-label-left" onclick="desplega('<?php echo $valor1?>','<?php echo $valor2?>','<?php echo $valor3?>','<?php echo $row[12]?>','<?php echo $row['masacorporal']?>','<?php echo $row['cc'] ?>','<?php echo $peso11 ?>',' <?php echo $peso22?>',' <?php echo $peso33?>','<?php echo $peso44?>');">
+              Actualizar gráfico</button>
+
+                   </div>
+
+
+
+
               <br>
          
             

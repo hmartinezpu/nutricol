@@ -5,7 +5,7 @@ if ($_SESSION['login'])
 {	
 	session_destroy();
 	echo '<script language = javascript>
-	alert("Su sesion ha terminado correctamente");
+	alert("Su sesión ha terminado correctamente");
 	self.location = "index.html"
 	</script>';}
 else

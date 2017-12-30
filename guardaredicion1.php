@@ -16,7 +16,7 @@ $up= mysqli_query($con, "UPDATE `dietasasignadas` SET `lunes`='$lunes',`martes`=
 
 if($up){
     
-    echo "Se actualizó correectamenre";
+    echo "Se actualizó correctamente";
 }else{
     
     echo  "<label>". mysqli_errno($con) . ": " . mysqli_error($con). "\n"."</label>";

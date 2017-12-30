@@ -1,4 +1,8 @@
-
+<div id="google_translate_element"></div><script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'es', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+}
+</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 <?php
 session_start();
 if (!$_SESSION) {
@@ -53,7 +57,7 @@ tipo=1;
 if(pesoa!=0 && pesoa!=null &&pesoa!="" && tma!=0 && tma!=null && tma!="" && gea!=0 && gea!=null && gea!="" && tmade!=0 && tmade!=null && tmade!="" && geade!=0 && geade!=null && geade!=""){
 
 
-if((cc!=='')&&(nom!=='')&&(ape!=='')&&(eda!=='' ) &&(eda>=18 )   &&(tal!=='')&&(mac!=='')&&(cor!=='')&&(cel!=='')){
+if((cc!=='')&&(nom!=='')&&(ape!=='')&&(eda!=='' ) &&(eda>=18 )   &&(tal!=='')&&(mac!=='')&&(cor!=='')&&(cel!=='')&&(edadc!=='')){
 loadDoc("vcod="+cc+"&nom="+nom+"&ape="+ape+"&eda="+eda+"&cor="+cor+"&cel="+cel+
         "&tal="+tal+"&sex="+sex+"&com="+com+"&act="+act+"&mac="+mac+"&mag="+mag+"&mav="+mav+"&estado="+est+"&fam="+fam+
         "&per="+per+"&obs="+obs+"&tipo="+tipo+"&edadc="+edadc+"&pesoa="+pesoa+"&tma="+tma+"&gea="+gea+"&tmade="+tmade+"&geade="+geade,"insertando.php",function(){
@@ -62,12 +66,12 @@ loadDoc("vcod="+cc+"&nom="+nom+"&ape="+ape+"&eda="+eda+"&cor="+cor+"&cel="+cel+
 
  document.getElementById("pers").innerHTML=xmlhttp.responseText;
  
- if(xmlhttp.responseText==="1"){
+ if(xmlhttp.responseText!="2" && xmlhttp.responseText!="3" ){
     alertify.success("Se registró el usuario correctamente");
     
-                window.open("result.php?var="+cc+""); 
+               // window.open("result.php?var="+cc+""); 
     }else if(xmlhttp.responseText==="2"){
-         alertify.error("Error");
+         alertify.error("Error, debe ingresar todos los datos");
         
     }  else if(xmlhttp.responseText==="3"){
 alertify.error("Ya existe un usuario con esta cedula");

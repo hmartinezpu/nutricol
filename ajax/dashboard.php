@@ -40,10 +40,10 @@ function dieta2(cod){
         $('#dietaa').slideUp('slow',function(){
        
     loadDoc4("vcod="+cod,"procesodieta.php",function(){
-	alert(cod);
+	
 
   if (xmlhttp4.readyState==4 && xmlhttp4.status==200){
-  	alert(xmlhttp4.responseText);
+  	
 
     document.getElementById("dietaa").innerHTML=xmlhttp4.responseText;
       
@@ -87,53 +87,7 @@ $('#dietaa').slideDown('slow');
 <div id="dashboard-header" class="row" style="margin : 0px;">
 	
 
-		 <div class="row">
-        <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="info-box">
-            <span class="info-box-icon bg-aqua"><i class="ion ion-ios-gear-outline"></i></span>
-
-            <div class="info-box-content">
-              <span class="info-box-text">Proteinas</span>
-              <span class="info-box-number">90<small>%</small></span>
-            </div>
-            <!-- /.info-box-content -->
-          </div>
-          <!-- /.info-box -->
-        </div>
-        <!-- /.col -->
-        <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="info-box">
-            <span class="info-box-icon bg-red"></i></span>
-
-            <div class="info-box-content">
-              <span class="info-box-text"></span>
-              <span class="info-box-number">Carbohidratos</span>
-            </div>
-            <!-- /.info-box-content -->
-          </div>
-          <!-- /.info-box -->
-        </div>
-        <!-- /.col -->
-
-        <!-- fix for small devices only -->
-        <div class="clearfix visible-sm-block"></div>
-
-       
-        <!-- /.col -->
-        <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="info-box">
-            <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
-
-            <div class="info-box-content">
-              <span class="info-box-text">Grasas</span>
-              <span class="info-box-number">2,000</span>
-            </div>
-            <!-- /.info-box-content -->
-          </div>
-          <!-- /.info-box -->
-        </div>
-        <!-- /.col -->
-      </div>
+		
 
 <!--End Dashboard 1-->
 <!--Start Dashboard 2-->

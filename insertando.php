@@ -83,7 +83,7 @@ if( mysqli_num_rows($q) == 0){
 	$fecha_actual=date("Y-m-d");
 		
         
-		if( ($nombres !=null) && ($apellidos !=null) && ($cedula !=null) && ($edad !=null)  && ($correo !=null) && ($celular !=null) && ($talla !=null) && ($sexo !=null) && ($complexion !=null) && ($peso !=null) && ($masag !=null) && ($masav !=null) && ($nombres !='') && ($apellidos !='') && ($cedula !=0) && ($edad !=0)  && ($celular !=0) && ($talla !=0)  &&  ($peso !=0) && ($masag !=0) && ($masav !=0) ){	
+		if( ($nombres !=null) && ($apellidos !=null) && ($cedula !=null) && ($edad !=null) && ($edadc !=null)  && ($correo !=null) && ($celular !=null) && ($talla !=null) && ($sexo !=null) && ($complexion !=null) && ($peso !=null) && ($masag !=null) && ($masav !=null) && ($nombres !='') && ($apellidos !='') && ($cedula !=0) && ($edad !=0)  && ($celular !=0) && ($talla !=0)  &&  ($peso !=0) && ($masag !=0) && ($masav !=0) && ($edadc !=0) ) {	
 		mysqli_query($con,"INSERT INTO `usuario` (`id`, `login`, `passnormal`, `passadmin`, `nombres`, `apellidos`, `cc`, `edad`, `correo`, `celular`, `talla`, `sexo`, `IMC`, `complexion`, `actividad`, `masacorporal`, `masagrasa`, `grasaviceral`, `tazametabolica`, `edadcorporal`, `estadofisiologico`, `familiares`, `personales`, `observaciones`, `Dietaasi`, `dietalibre`, `tipo`,`constante`) 
 			                            VALUES ('$cedula', '$cedula', '$cedula', '', '$nombres', '$apellidos', '$cedula', '$edad', '$correo', '$celular', '$talla', '$sexo', '$IMC', '$complexion', '$activity', '$peso', '$masag', '$masav', '$TM','$edadc', '$estado', '$familiares', '$personales', '$observaciones', '$dieta', '$dietalibre', '$tipo',$constante);") or die("<label>". mysqli_errno($con) . ": " . mysqli_error($con). "\n"
 ."</label>");
@@ -119,6 +119,7 @@ if( mysqli_num_rows($q) == 0){
 				mysqli_query($con,"INSERT INTO `dietasasignadas`(`cc`, `lunes`, `martes`, `miercoles`, `jueves`, `viernes`, `sabado`, `domingo`, `id`) VALUES ('$cedula','".$row2['lunes']."','$row2[2]','$row2[3]','$row2[4]','$row2[5]','$row2[6]','$row2[7]','$cedula')")or die("<label>". mysqli_errno($con) . ": " . mysqli_error($con). "\n"."</label>");
 				if($constante==3){
 					 $sql5="INSERT INTO bajarasignadas SELECT * FROM dietasubir WHERE id='1'";
+					 
 					 $up=mysqli_query($con, $sql5)or die("<label>". mysqli_errno($con) . ": " . mysqli_error($con). "\n"."</label>");
 					 mysqli_query($con,"UPDATE `bajarasignadas` SET `id`=$cedula WHERE id='1'");
 
@@ -131,7 +132,7 @@ if( mysqli_num_rows($q) == 0){
 					 $up=mysqli_query($con, $sql5)or die("<label>". mysqli_errno($con) . ": " . mysqli_error($con). "\n"."</label>");
 					 mysqli_query($con,"UPDATE `bajarasignadas` SET `id`=$cedula WHERE id='1'");
 				}
-				echo '1';
+				echo "IMC: ".$IMC;
 
 
 			   /* if($row1['estadofisiologico']==0){

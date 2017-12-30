@@ -201,6 +201,8 @@ self.location = "index.html"
         </script>
     </head>
     <body>
+
+
         <!--Start Header-->
         <div id="screensaver">
             <canvas id="canvas"></canvas>
@@ -299,6 +301,17 @@ self.location = "index.html"
         <!--Start Container-->
         <div id="main" class="container-fluid">
             <div class="row">
+
+
+    <div id="google_translate_element"></div><script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'es', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+}
+</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+
+
+            
                 <div id="sidebar-left" class="col-xs-2 col-sm-2">
                     <ul class="nav main-menu">
                         <li>

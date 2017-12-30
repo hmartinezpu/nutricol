@@ -1,3 +1,8 @@
+<div id="google_translate_element"></div><script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'es', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+}
+</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 <script src="//cdn.jsdelivr.net/alertifyjs/1.4.0/alertify.min.js"></script>
 
 <script src="ajax.js"></script>
@@ -111,7 +116,7 @@ cedula1=cc;
 d=document.getElementById("correoedit").value;
 e=document.getElementById("celularedit").value;
 
-g=document.getElementById("masacedit").value;
+g=document.getElementById("masaceditt").value;
 
 			
 			pesoa=document.getElementById("pesoa").value;
@@ -121,7 +126,7 @@ g=document.getElementById("masacedit").value;
 			geade=document.getElementById("cuatro").value;
 
 
-if(pesoa!=0 && pesoa!=null &&pesoa!="" && tma!=0 && tma!=null && tma!="" && gea!=0 && gea!=null && gea!="" && tmade!=0 && tmade!=null && tmade!="" && geade!=0 && geade!=null && geade!=""){
+if(pesoa!=0 && pesoa!=null && pesoa!="" && tma!=0 && tma!=null && tma!="" && gea!=0 && gea!=null && gea!="" && tmade!=0 && tmade!=null && tmade!="" && geade!=0 && geade!=null && geade!=""){
 
 loadDoc("vcod="+cedula1+"&n="+n+"&a="+a+"&d="+d+"&e="+e+"&g="+g+"&estatura="+estatura+"&generoo="+generoo+"&edadd="+edadd+"&pesoa="+pesoa+"&tma="+tma+"&gea="+gea+"&tmade="+tmade+"&geade="+geade,"guardaredicion.php",function(){
 
@@ -129,7 +134,7 @@ loadDoc("vcod="+cedula1+"&n="+n+"&a="+a+"&d="+d+"&e="+e+"&g="+g+"&estatura="+est
 	
     if(xmlhttp.responseText==1){
 
-    	alertify.success("Se editó la informacion del usuario correctamente");
+    	alertify.success("Se editó la información del usuario correctamente, recargue la páginas");
     	
     }
     
@@ -208,7 +213,7 @@ tipo=1;
 if(pesoa!=0 && pesoa!=null &&pesoa!="" && tma!=0 && tma!=null && tma!="" && gea!=0 && gea!=null && gea!="" && tmade!=0 && tmade!=null && tmade!="" && geade!=0 && geade!=null && geade!=""){
 
 
-if((cc!=='')&&(nom!=='')&&(ape!=='')&&(eda!=='' ) &&(eda>=18 )   &&(tal!=='')&&(mac!=='')&&(cor!=='')&&(cel!=='')){
+if((cc!=='') || (nom!=='')||(ape!=='')||(eda!=='' ) ||(eda>=18 )  ||(tal!=='')||(mac!=='')||(cor!=='')||(cel!=='')){
 loadDoc("vcod="+cc+"&nom="+nom+"&ape="+ape+"&eda="+eda+"&cor="+cor+"&cel="+cel+
         "&tal="+tal+"&sex="+sex+"&com="+com+"&act="+act+"&mac="+mac+"&mag="+mag+"&mav="+mav+"&estado="+est+"&fam="+fam+
         "&per="+per+"&obs="+obs+"&tipo="+tipo+"&edadc="+edadc+"&pesoa="+pesoa+"&tma="+tma+"&gea="+gea+"&tmade="+tmade+"&geade="+geade,"insertando.php",function(){
@@ -238,7 +243,11 @@ alertify.error("Ya existe un usuario con esta cedula");
     }
   
   });
-  }else{alertify.error('Error, debe ingresar todos los datos')}
+  }else{
+  	alert((cc+" "+nom+" "+ape+" "+eda+" "+eda+" "+tal+" "+mac+" "+cor+" "+cel));
+  	alertify.error('Error, debe ingresar todos los datos');
+
+}
 }else{
 	alertify.error("Debes ingresar la información de la Tasa metabólica");
 }
@@ -248,12 +257,13 @@ alertify.error("Ya existe un usuario con esta cedula");
 
 function calcular(){
 
-	var p1=document.getElementById("masacedit").value;
+	var p1=document.getElementById("masaceditt").value;
 	var p2=document.getElementById("pesoa").value;
 
 	var gen=document.getElementById("generoedit").value;
 
-	var edad=document.getElementById("edadedit").value;
+	var edad=document.getElementById("edadeditt").value;
+		
 	var num=$("#actividad").val();
 	var actividad=num.toString();
 	
@@ -262,6 +272,7 @@ function calcular(){
 	var tmade=0;
 	var geade=0;
 	if(p1!=0 && p2!=0 && edad!=0){
+
 		if(gen=="Femenino"){
 			if(edad>=18 && edad<30){
 						tma=14.818*p1+486.6;
@@ -364,6 +375,7 @@ function calcular(){
 
 
 		}else{
+				alert(p1+","+p2+","+edad);
 			 alertify.error("Error, debe ingresar todos los datos");
 		}
 
@@ -380,8 +392,21 @@ function calcular(){
 
 
  function desplega(p1,p2,p3,imc,peso,cc,peso1,peso2,peso3,peso4){
+    var pesos;
+    loadDoc("q="+cc,"desplega.php",function(){
+
+  if (xmlhttp.readyState==4 && xmlhttp.status==200){
+
+    pesos=xmlhttp.responseText;
+     
+    var res = pesos.split(",");
+    peso2=parseFloat(res[1]);
+    peso3=parseFloat(res[2]);
+    peso4=parseFloat(res[3]);
     
-	
+   
+
+	       
 	if(peso2==0){
 		peso2=null;
 	}
@@ -392,15 +417,19 @@ function calcular(){
 		peso4=null;
 	}
 
-   var pesofinal=0;
-   var pesoini=0;
+   var pesofinal=document.getElementById("pesoa").value;
+   var pesoini=peso1;
    if(p1>p2){
-    pesofinal=p2;
-    pesoini=p1;
-   }else if(p1<p2){
     pesofinal=p1;
-    pesoini=p2;
+   
+   }else if(p1<p2){
+    pesofinal=p2;
+    
    }
+
+  
+
+
     pro=(p1+p2)/2;   
     $('#grafo').slideUp('slow',function(){
 	var chart = AmCharts.makeChart("dieta", {
@@ -489,9 +518,20 @@ function calcular(){
     "cursorAlpha": 0,
     "valueLineAlpha": 0
   }
-});
+    });
  });
 $('#grafo').slideDown('slow');
+
+
+
+      }else{ 
+
+    }
+
+  });
+
+
+
       }  
 
 function myFunction2(cod){
@@ -520,8 +560,12 @@ $('#pers1').slideDown('slow');
 
 
  function desplega2(peso1,peso2,peso3,peso4){
-    
-	
+
+
+
+
+
+        
  
     $('#grafo2').slideUp('slow',function(){
 	var chart = AmCharts.makeChart("dieta2", {
@@ -691,7 +735,7 @@ $('#grafo2').slideDown('slow');
 
 						<label class="col-sm-2 control-label" style='text-aling="right"'>Apellidos</label>
 						<div class="col-sm-6">
-							<input id="apellidos"type="text" class="form-control" placeholder="Apellidos" data-original-title="" title="">
+							<input id="apellidos" type="text" class="form-control" placeholder="Apellidos" data-original-title="" title="">
 							
 						</div>
 
@@ -772,7 +816,7 @@ $('#grafo2').slideDown('slow');
 						
 						<label class="col-sm-2 control-label">Peso</label>
 						<div class="col-sm-6">
-							<input  type="number" step="0.01" id="masacedit"  placeholder="Masa Corporal" required  type="text" class="form-control"data-original-title="" title="">
+							<input  type="number" step="0.01" id="masacedit"  placeholder="Masa Corporal" required  type="text" class="form-control">
 							
 						</div>
 
@@ -931,7 +975,7 @@ $('#grafo2').slideDown('slow');
 			</div>
 			<div class="box-content"  style="height: 495px;" id="grafo" >
 			
-                            <div id="dieta" align="justify" style="width:520px; height:300px;;font-size:11px;"></div>	
+                            <div id="dieta" align="justify" style="max-width:520px; max-height:300px;;font-size:11px;"></div>	
 
 				
 			</div>
